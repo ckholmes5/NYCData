@@ -1,0 +1,73 @@
+#Question 1
+#1. Create a directory named test and make test a git repository
+mkdir test
+cd test
+git init
+
+#2. Create a file named a .txt w ith the content “Git is good” under test and add a .txt to the staging area.
+echo "Git is good" > a.txt
+git add a.txt
+
+#3. Run the command g it status a nd check the output.
+git status
+
+#4. Now commit your changes and check the output of git status. 
+git commit -m "Adding a.txt"
+git status
+
+
+#Question 2
+#1. Create a new directory named subtest under t est repo and add a file b.txt into it, the content can be anything.
+mkdir subtest
+cd subtest
+echo "Learning is fun" > b.txt
+#2. Add some more files, for example a 1.txt, a 2.txt, to t est repo and then add all of them to the staging area.
+cd ..
+echo "Nothing to see here" > a1.txt
+echo "Really important" > a2.txt
+git add a1.txt a2.txt subtest/
+
+#3. Run g it status to make sure you have everything in the staging area and then commit them.
+git commit -m "Adding a1.txt, a2.txt, and subtest directory"
+git status
+
+#4. Display all the commits we’ve done so far.
+git log --graph --decorate
+
+
+
+#Question 3
+#1. Create a new repository with the name test on your Github account and follow the instruction on Github to link the remote repository with the local one you just created in question 1
+git remote add origin https://github.com/ckholmes5/test.git
+git remote -v
+git pull origin master
+
+#2. Add a new line “Github is awesome” to the file a .txt under the local repo test and then add the change to the staging area.
+"Github is awesome" >> a.txt
+git add a.txt
+
+#3. Now a .txt has two versions. Use diff to show the difference between the old version that we just committed and the new one in the staging area.
+git diff HEAD -- a.txt
+
+#4. Commit the changes and push it to the remote repo.
+git commit -m "Updating a.txt with more info on github"
+git push origin master
+
+#Question 4
+#2. Edit a 1.txt and add it to the staging area and then try to undo the changes.
+echo "Hello world again" >> a.txt
+git add a.txt
+git reset HEAD a.txt
+
+#3. Edit the file a 1.txt and commit it to the repository and then try to undo the changes you just committed.
+echo "woo" >> a.txt
+git add a.txt
+git commmit -m "One last change"
+git checkout -- a.txt
+
+
+
+
+
+
+
